@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Request Demo - TS Edu Suite</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="page">
+    <section class="container demo-section">
+      <div class="section-head">
+        <p class="eyebrow">Request demo access</p>
+        <h1>Start your <strong>TS Edu Suite</strong> demo with a single request.</h1>
+        <p class="lead">Complete the form below and receive instant access to administrator, parent and student demo credentials.</p>
+      </div>
+
+      <div class="demo-grid">
+        <article class="card info">
+          <div class="info-header">
+            <p class="eyebrow">Demo access made simple</p>
+            <h2>Quick access to the full school management experience.</h2>
+          </div>
+          <p>Submit your details once to unlock a read-only demo with administrator, parent and student workflows.</p>
+          <ul class="info-list">
+            <li>Instant credentials for all user roles</li>
+            <li>Secure demo environment with real features</li>
+            <li>Personalized follow-up available on request</li>
+          </ul>
+        </article>
+
+        <form id="demoForm" class="card form" novalidate>
+          <div class="form-column">
+            <div class="row two">
+              <label>
+                <span>Full Name *</span>
+                <input name="fullName" placeholder="Jane Doe" required>
+              </label>
+              <label>
+                <span>School Name *</span>
+                <input name="schoolName" placeholder="Green Valley Academy" required>
+              </label>
+            </div>
+
+            <div class="row two">
+              <label>
+                <span>Email Address *</span>
+                <input type="email" name="email" placeholder="jane@school.edu.ng" required>
+              </label>
+              <label>
+                <span>Phone Number *</span>
+                <input type="tel" name="phone" placeholder="+234 800 123 4567" required>
+              </label>
+            </div>
+
+            <div class="row two">
+              <label>
+                <span>Role / Position *</span>
+                <select name="role" required>
+                  <option value="">Select position</option>
+                  <option>School Owner</option>
+                  <option>Principal</option>
+                  <option>Head Teacher</option>
+                  <option>School Administrator</option>
+                  <option>ICT Coordinator</option>
+                </select>
+              </label>
+              <label>
+                <span>Number of Students</span>
+                <input name="studentCount" placeholder="e.g. 450">
+              </label>
+            </div>
+
+            <label>
+              <span>School Type</span>
+              <input name="schoolType" placeholder="Day, boarding, mixed, private">
+            </label>
+          </div>
+
+          <p id="error" class="error" aria-live="polite"></p>
+          <button id="submitBtn" type="submit" class="btn primary large">Submit Request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/demo.js"></script>
+</body>
+</html>

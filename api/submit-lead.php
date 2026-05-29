@@ -40,10 +40,11 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$dbHost = 'localhost';
-$dbUser = 'root';
-$dbPass = '';
-$dbName = 'school';
+// Update these values for your shared hosting environment if environment variables are not available.
+$dbHost = getenv('DB_HOST') ?: 'localhost';
+$dbUser = getenv('DB_USER') ?: 'root';
+$dbPass = getenv('DB_PASS') ?: '';
+$dbName = getenv('DB_NAME') ?: 'school';
 
 $mysqli = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
 if ($mysqli->connect_errno) {
@@ -53,7 +54,7 @@ if ($mysqli->connect_errno) {
 }
 
 $mysqli->set_charset('utf8mb4');
-$stmt = $mysqli->prepare('INSERT INTO leads (full_name, school_name, email, phone, role, student_count, school_type, source_url, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())');
+$stmt = $mysqli->prepare('INSERT INTO leads (full_name, school_name, email, phone, `role`, student_count, school_type, source_url, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())');
 if (!$stmt) {
     http_response_code(500);
     echo json_encode(['success' => false, 'message' => 'Unable to prepare the lead insertion.']);
@@ -69,6 +70,7 @@ if (!$stmt->execute()) {
     exit;
 }
 
+/*
 // Build notification email after successful database insert.
 $notificationSubject = 'New Demo Request Submitted';
 $notificationBody = "Full Name: {$fullName}\r\n";
@@ -80,14 +82,16 @@ $notificationBody .= "Number of Students: {$studentCount}\r\n";
 $notificationBody .= "Submitted At: " . date('Y-m-d H:i:s') . "\r\n";
 $notificationBody .= "IP Address: " . ($_SERVER['REMOTE_ADDR'] ?? 'Unknown') . "\r\n";
 
-$headers = "From: notifications@mydomain.com\r\n";
+$notificationFrom = getenv('NOTIFICATION_FROM') ?: 'notifications@mydomain.com';
+$notificationTo = getenv('NOTIFICATION_EMAIL') ?: 'your@email.com';
+$headers = "From: {$notificationFrom}\r\n";
 $headers .= "Reply-To: {$email}\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-$notificationTo = 'your@email.com';
 if (!mail($notificationTo, $notificationSubject, $notificationBody, $headers)) {
     error_log('Lead notification email failed for lead: ' . $fullName . ' <' . $email . '>');
 }
+*/
 
 $stmt->close();
 $mysqli->close();
