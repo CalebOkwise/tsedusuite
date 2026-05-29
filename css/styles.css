@@ -571,6 +571,7 @@ h3 {
 
 .operations-section,
 .roles-panel,
+.pricing-section,
 .faq-section,
 .cta-bottom {
   padding: 96px 0;
@@ -677,6 +678,132 @@ h3 {
 .testimonial-card strong,
 .testimonial-card span {
   display: block;
+}
+
+.pricing-section {
+  border-bottom: 1px solid var(--line);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(12, 23, 40, 0.9);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.16);
+}
+
+.pricing-card.featured {
+  border: 2px solid var(--blue);
+  background:
+    linear-gradient(180deg, rgba(86, 168, 255, 0.12), rgba(12, 23, 40, 0.94) 34%),
+    rgba(12, 23, 40, 0.94);
+  box-shadow: 0 28px 80px rgba(86, 168, 255, 0.18);
+}
+
+.popular-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px 14px;
+  border-radius: 0 6px 0 8px;
+  background: linear-gradient(135deg, var(--blue), #5b3df5);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.pricing-card-head h3 {
+  margin: 0 0 10px;
+  font-size: 1.22rem;
+}
+
+.pricing-card-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.price-block {
+  margin: 26px 0 16px;
+}
+
+.price-block strong,
+.price-block span {
+  display: block;
+}
+
+.price-block strong {
+  color: var(--ink);
+  font-size: clamp(1.85rem, 2.2vw, 2.25rem);
+  line-height: 1;
+}
+
+.price-block span {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.pricing-btn {
+  width: 100%;
+  min-height: 42px;
+  margin-bottom: 22px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--ink);
+  border-color: transparent;
+  font-size: 0.86rem;
+}
+
+.pricing-card.featured .pricing-btn {
+  background: linear-gradient(135deg, #285df5, #5b3df5);
+  color: #fff;
+}
+
+.pricing-features {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.pricing-features li {
+  position: relative;
+  padding-left: 24px;
+}
+
+.pricing-features li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--green);
+  font-weight: 900;
+}
+
+.pricing-card:hover {
+  border-color: rgba(35, 196, 131, 0.32);
+}
+
+.pricing-card.featured:hover {
+  border-color: var(--blue);
 }
 
 .faq-section {
@@ -913,6 +1040,7 @@ select:focus {
   .problem-grid article,
   .role-card,
   .testimonial-card,
+  .pricing-card,
   .faq-grid article,
   .cta-card {
     animation: fade-in-up 0.7s ease both;
@@ -965,6 +1093,7 @@ select:focus {
   .module-grid,
   .problem-grid,
   .role-grid,
+  .pricing-grid,
   .faq-grid,
   .grid.three {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1051,9 +1180,18 @@ select:focus {
   .testimonial-band,
   .operations-section,
   .roles-panel,
+  .pricing-section,
   .faq-section,
   .cta-bottom {
     padding: 64px 0;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card {
+    min-height: auto;
   }
 
   .role-card {
